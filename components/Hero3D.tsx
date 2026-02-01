@@ -1,16 +1,10 @@
+
 import React, { useRef, useMemo } from 'react';
-import { Canvas, useFrame, ThreeElements } from '@react-three/fiber';
-import { MeshDistortMaterial, Sphere, OrbitControls, Float } from '@react-three/drei';
+import { Canvas, useFrame } from '@react-three/fiber';
+import { MeshDistortMaterial, Sphere, OrbitControls, Float, Points, PointMaterial } from '@react-three/drei';
 import * as THREE from 'three';
 
-// Fix for JSX intrinsic elements errors by extending the global JSX namespace with Three.js elements
-declare global {
-  namespace JSX {
-    interface IntrinsicElements extends ThreeElements {}
-  }
-}
-
-// Fixed: Removed React.FC requirement to prevent mandatory children errors during rendering
+// NeuralCore uses the Sphere component from drei which is a typed React component to avoid mesh/sphereGeometry errors
 const NeuralCore = () => {
   const meshRef = useRef<THREE.Mesh>(null!);
 
@@ -24,8 +18,7 @@ const NeuralCore = () => {
 
   return (
     <Float speed={2} rotationIntensity={1} floatIntensity={2}>
-      <mesh ref={meshRef}>
-        <sphereGeometry args={[1, 64, 64]} />
+      <Sphere ref={meshRef} args={[1, 64, 64]}>
         <MeshDistortMaterial
           color="#0070F3"
           speed={3}
@@ -36,12 +29,12 @@ const NeuralCore = () => {
           emissive="#8B5CF6"
           emissiveIntensity={0.5}
         />
-      </mesh>
+      </Sphere>
     </Float>
   );
 };
 
-// Fixed: Removed React.FC requirement to prevent mandatory children errors during rendering
+// Particles uses the Points and PointMaterial components from drei to avoid points/bufferAttribute errors
 const Particles = () => {
   const count = 500;
   const positions = useMemo(() => {
@@ -62,28 +55,25 @@ const Particles = () => {
   });
 
   return (
-    <points ref={pointsRef}>
-      <bufferGeometry>
-        <bufferAttribute
-          attach="attributes-position"
-          count={count}
-          array={positions}
-          itemSize={3}
-        />
-      </bufferGeometry>
-      <pointsMaterial size={0.02} color="#ffffff" transparent opacity={0.3} sizeAttenuation />
-    </points>
+    <Points ref={pointsRef} positions={positions} stride={3}>
+      <PointMaterial size={0.02} color="#ffffff" transparent opacity={0.3} sizeAttenuation />
+    </Points>
   );
 };
 
-// Fixed: Removed React.FC requirement to prevent mandatory children errors during rendering
+// Hero3D uses useMemo for lights and primitive components to avoid intrinsic element errors (ambientLight, pointLight)
 const Hero3D = () => {
+  const ambientLight = useMemo(() => new THREE.AmbientLight(0xffffff, 0.5), []);
+  const blueLight = useMemo(() => new THREE.PointLight(0x0070F3, 1), []);
+  const purpleLight = useMemo(() => new THREE.PointLight(0x8B5CF6, 1), []);
+
   return (
     <div className="absolute inset-0 z-0">
       <Canvas camera={{ position: [0, 0, 5], fov: 50 }}>
-        <ambientLight intensity={0.5} />
-        <pointLight position={[10, 10, 10]} intensity={1} color="#0070F3" />
-        <pointLight position={[-10, -10, -10]} intensity={1} color="#8B5CF6" />
+        {/* Fixed: Replaced intrinsic elements with primitives to avoid JSX type errors in restricted environments */}
+        <primitive object={ambientLight} />
+        <primitive object={blueLight} position={[10, 10, 10]} />
+        <primitive object={purpleLight} position={[-10, -10, -10]} />
         <NeuralCore />
         <Particles />
         <OrbitControls enableZoom={false} enablePan={false} autoRotate autoRotateSpeed={0.5} />

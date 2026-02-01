@@ -1,27 +1,30 @@
-import { User } from '../types';
+import { User } from "../types";
+import SHA256 from "crypto-js/sha256";
 
-// Accessing environment variables. Note: In a pure ESM/importmap environment without a build step, 
-// these are often managed via a config fetch or global injection. 
-// For standard Vite/Netlify workflows, we use import.meta.env.
-const ADMIN_CREDENTIALS = {
-  email: (import.meta as any).env?.VITE_ADMIN_EMAIL || 'novexisstudios@gmail.com',
-  password: (import.meta as any).env?.VITE_ADMIN_PASSWORD || 'Novexisr0cks@123'
-};
+// This is the hash of ""
+const ADMIN_HASH =
+  "f1d20e726224847794cc5d14e5aab4e45bcfa889c3c0c36546f5d0cef1b30721";
+const ADMIN_EMAIL = "novexisstudios@gmail.com";
 
 export const login = (email: string, pass: string): User | null => {
-  if (email === ADMIN_CREDENTIALS.email && pass === ADMIN_CREDENTIALS.password) {
-    const user: User = { id: 'admin_1', email, role: 'admin' };
-    localStorage.setItem('novexis_user', JSON.stringify(user));
+  // 1. Hash the incoming password attempt
+  const hashedAttempt = SHA256(pass).toString();
+
+  // 2. Compare the email AND the hashed password
+  if (email === ADMIN_EMAIL && hashedAttempt === ADMIN_HASH) {
+    const user: User = { id: "admin_1", email, role: "admin" };
+    localStorage.setItem("novexis_user", JSON.stringify(user));
     return user;
   }
+
   return null;
 };
 
 export const logout = () => {
-  localStorage.removeItem('novexis_user');
+  localStorage.removeItem("novexis_user");
 };
 
 export const getCurrentUser = (): User | null => {
-  const data = localStorage.getItem('novexis_user');
+  const data = localStorage.getItem("novexis_user");
   return data ? JSON.parse(data) : null;
 };

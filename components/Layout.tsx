@@ -1,10 +1,12 @@
+
 import React, { useState, useEffect } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { Menu, X, ShieldCheck, LogOut } from 'lucide-react';
 import { getCurrentUser, logout } from '../services/authService';
 
 interface LayoutProps {
-  children: React.ReactNode;
+  // Fixed: Made children optional to ensure proper resolution even during global namespace conflicts
+  children?: React.ReactNode;
 }
 
 const Layout = ({ children }: LayoutProps) => {
