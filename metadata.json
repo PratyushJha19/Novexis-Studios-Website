@@ -1,0 +1,7 @@
+{
+  "name": "Copy of Novexis Studios",
+  "description": "A premium creative-technology studio specializing in digital systems, infrastructure, and high-end media production.",
+  "requestFramePermissions": [
+    "camera"
+  ]
+}
