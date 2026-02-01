@@ -1,6 +1,6 @@
 [build]
-  publish = "."
-  command = "# No build step needed for this ESM architecture"
+  publish = "dist"
+  command = "npm run build"
 
 [[headers]]
   for = "/*"
