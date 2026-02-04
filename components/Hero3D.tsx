@@ -1,8 +1,14 @@
-
-import React, { useRef, useMemo } from 'react';
-import { Canvas, useFrame } from '@react-three/fiber';
-import { MeshDistortMaterial, Sphere, OrbitControls, Float, Points, PointMaterial } from '@react-three/drei';
-import * as THREE from 'three';
+import React, { useRef, useMemo } from "react";
+import { Canvas, useFrame } from "@react-three/fiber";
+import {
+  MeshDistortMaterial,
+  Sphere,
+  OrbitControls,
+  Float,
+  Points,
+  PointMaterial,
+} from "@react-three/drei";
+import * as THREE from "three";
 
 // NeuralCore uses the Sphere component from drei which is a typed React component to avoid mesh/sphereGeometry errors
 const NeuralCore = () => {
@@ -11,8 +17,8 @@ const NeuralCore = () => {
   useFrame((state) => {
     const time = state.clock.getElapsedTime();
     if (meshRef.current) {
-        meshRef.current.rotation.x = time * 0.1;
-        meshRef.current.rotation.y = time * 0.15;
+      meshRef.current.rotation.x = time * 0.1;
+      meshRef.current.rotation.y = time * 0.15;
     }
   });
 
@@ -56,7 +62,13 @@ const Particles = () => {
 
   return (
     <Points ref={pointsRef} positions={positions} stride={3}>
-      <PointMaterial size={0.02} color="#ffffff" transparent opacity={0.3} sizeAttenuation />
+      <PointMaterial
+        size={0.02}
+        color="#ffffff"
+        transparent
+        opacity={0.3}
+        sizeAttenuation
+      />
     </Points>
   );
 };
@@ -64,8 +76,8 @@ const Particles = () => {
 // Hero3D uses useMemo for lights and primitive components to avoid intrinsic element errors (ambientLight, pointLight)
 const Hero3D = () => {
   const ambientLight = useMemo(() => new THREE.AmbientLight(0xffffff, 0.5), []);
-  const blueLight = useMemo(() => new THREE.PointLight(0x0070F3, 1), []);
-  const purpleLight = useMemo(() => new THREE.PointLight(0x8B5CF6, 1), []);
+  const blueLight = useMemo(() => new THREE.PointLight(0x0070f3, 1), []);
+  const purpleLight = useMemo(() => new THREE.PointLight(0x8b5cf6, 1), []);
 
   return (
     <div className="absolute inset-0 z-0">
@@ -76,7 +88,7 @@ const Hero3D = () => {
         <primitive object={purpleLight} position={[-10, -10, -10]} />
         <NeuralCore />
         <Particles />
-        <OrbitControls enableZoom={false} enablePan={false} autoRotate autoRotateSpeed={0.5} />
+        {/* <OrbitControls enableZoom={false} enablePan={false} autoRotate autoRotateSpeed={0.5} /> */}
       </Canvas>
     </div>
   );

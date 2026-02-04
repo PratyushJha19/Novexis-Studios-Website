@@ -158,13 +158,13 @@ const Contact = () => {
 
                   <button
                     disabled={loading}
-                    className="w-full py-5 bg-gradient-to-r from-blue-600 to-purple-600 text-white font-bold uppercase tracking-[0.2em] text-sm rounded-2xl transition-all hover:scale-[1.02] active:scale-95 disabled:opacity-50 flex items-center justify-center gap-3"
+                    className="w-full py-5 px-5 bg-gradient-to-r from-blue-600 to-purple-600 text-white font-bold uppercase tracking-[0.2em] text-sm rounded-2xl transition-all hover:scale-[1.02] active:scale-95 disabled:opacity-50 flex items-center justify-center gap-3"
                   >
                     {loading ? (
                       "Transmitting..."
                     ) : (
                       <>
-                        Send Transmission <Send size={16} />
+                        Send Transmission <Send size={20} />
                       </>
                     )}
                   </button>

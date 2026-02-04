@@ -10,6 +10,7 @@ import {
 } from "lucide-react";
 import { SERVICES } from "../constants";
 import SEO from "@/components/SEO";
+import { Link } from "react-router-dom";
 
 const Services = () => {
   return (
@@ -109,13 +110,27 @@ const Services = () => {
             </p>
 
             <div className="flex flex-col md:flex-row items-center justify-center gap-10">
-              <motion.button
+              <motion.div
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.98 }}
-                className="px-16 py-6 bg-white text-black text-base font-bold uppercase tracking-[0.1em] rounded-full hover:bg-blue-600 hover:text-white transition-all shadow-2xl"
               >
-                Initialize Session
-              </motion.button>
+                <Link
+                  to="/contact"
+                  className="
+      inline-block
+      px-16 py-6
+      bg-white text-black
+      text-base font-bold
+      uppercase tracking-[0.1em]
+      rounded-full
+      hover:bg-blue-600 hover:text-white
+      transition-all
+      shadow-2xl
+    "
+                >
+                  Initialize Session
+                </Link>
+              </motion.div>
               <p className="text-[13px] font-bold text-white/30 uppercase tracking-[0.4em]">
                 Response Window: 12 Hours
               </p>

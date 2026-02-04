@@ -1,0 +1,5 @@
+@media (max-width: 450px) {
+    .mobile-shift-right {
+        transform: translateX(30px);
+    }
+}

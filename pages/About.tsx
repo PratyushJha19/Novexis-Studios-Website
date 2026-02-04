@@ -267,7 +267,20 @@ const About = () => {
           <motion.div whileHover={{ scale: 1.05 }} className="inline-block">
             <a
               href="#/contact"
-              className="px-14 py-4 bg-white text-black font-bold rounded-full uppercase tracking-[0.15em] text-sm shadow-2xl shadow-white/10 hover:bg-blue-600 hover:text-white transition-all"
+              className="
+      px-6 sm:px-14 
+      py-4 
+      bg-white text-black 
+      font-bold 
+      rounded-full 
+      uppercase 
+      tracking-[0.1em] sm:tracking-[0.15em] 
+      text-xs sm:text-sm 
+      shadow-2xl shadow-white/10 
+      hover:bg-blue-600 hover:text-white 
+      transition-all
+      whitespace-nowrap
+    "
             >
               Initialize Connection
             </a>
