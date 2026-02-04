@@ -15,6 +15,7 @@ import Contact from "./pages/Contact";
 import Login from "./pages/Login";
 import AdminDashboard from "./pages/AdminDashboard";
 import { getCurrentUser } from "./services/authService";
+import ScrollToTop from "./components/ScrollToTop";
 
 // Fixed: Made children optional to prevent 'Property children is missing' errors in some TS environments
 const ProtectedRoute = ({ children }: { children?: React.ReactNode }) => {
@@ -29,6 +30,7 @@ const ProtectedRoute = ({ children }: { children?: React.ReactNode }) => {
 const App = () => {
   return (
     <Router>
+      <ScrollToTop />
       <Layout>
         <Routes>
           <Route path="/" element={<Home />} />

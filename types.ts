@@ -1,10 +1,9 @@
-
 export enum ProjectCategory {
-  CREATIVE = 'Creative & Media',
-  DESIGN = 'Design',
-  TECH = 'Tech & Dev',
-  CLOUD = 'Cloud & Infrastructure',
-  GROWTH = 'Growth'
+  TECH = "Technology & Development",
+  MEDIA = "Creative & Media",
+  DESIGN = "Design Systems",
+  CLOUD = "Cloud & Automations",
+  GROWTH = "Marketing & Analytics",
 }
 
 export interface CaseStudy {
@@ -18,8 +17,10 @@ export interface CaseStudy {
   outcome: string;
   technologies: string[];
   imageUrl: string;
+  videoUrl?: string; // Added: Optional for YouTube/Instagram links
   published: boolean;
-  createdAt: string;
+  createdAt: string; // Added: For system tracking
+  updatedAt?: string; // Added: For modification tracking
 }
 
 export interface ServiceItem {
@@ -35,5 +36,5 @@ export interface ServiceCategory {
 export interface User {
   id: string;
   email: string;
-  role: 'admin' | 'visitor';
+  role: "admin" | "visitor";
 }
