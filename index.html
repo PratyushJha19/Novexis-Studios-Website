@@ -3,76 +3,166 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <link rel="icon" type="image/png" href="/logo-transparent.png" />
+
+    <link
+      rel="icon"
+      type="image/png"
+      href="/logo-transparent.png"
+      sizes="32x32"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      href="/logo-transparent.png"
+      sizes="16x16"
+    />
+
+    <link rel="apple-touch-icon" sizes="180x180" href="/logo-transparent.png" />
+
+    <link rel="icon" type="image/svg+xml" href="/logo-transparent.png" />
+
+    <link rel="manifest" href="/site.webmanifest" />
 
     <title>
-      Novexis Studios | AI, Software Solutions, Media & Graphic Design
+      Novexis Studios | AI, Dev, Video, Marketing, Design & Creative Content
+      Systems
     </title>
-
+    <meta
+      name="title"
+      content="Novexis Studios | AI, Dev, Video, Marketing, Design & Creative Content Systems"
+    />
     <meta
       name="description"
-      content="Novexis Studios builds high-performance web apps, AI systems, and scalable software solutions for modern businesses."
+      content="Novexis Studios engineers the future of digital growth. We combine Full-Stack Dev, AI, and Game Design with elite Video Editing, 3D Artistry, and Marketing Analytics to scale startups and enterprises."
     />
 
-    <meta
-      name="keywords"
-      content="Novexis Studios, AI development, Web development India, software studio, full stack development, automation systems"
-    />
-
-    <link rel="canonical" href="https://novexisstudios.in/" />
-
-    <!-- Open Graph -->
     <meta property="og:type" content="website" />
-    <meta property="og:title" content="Novexis Studios" />
+    <meta
+      property="og:title"
+      content="Novexis Studios | Digital Systems for the Future"
+    />
     <meta
       property="og:description"
-      content="AI, Web & Software Solutions for Modern Businesses"
+      content="From Custom Software & AI to Video Editing, Social Media Management, and Data Intelligence. Your all-in-one partner for digital evolution."
     />
-    <meta property="og:url" content="https://novexisstudios.in/" />
-    <meta
-      property="og:image"
-      content="https://novexisstudios.in/logo-transparent.png"
-    />
+    <meta property="og:image" content="/og-banner.jpg" />
 
-    <!-- Twitter -->
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="Novexis Studios" />
-    <meta
-      name="twitter:description"
-      content="Building futuristic web and AI solutions."
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@300;400;500;600;700;800;900&display=swap"
+      rel="stylesheet"
     />
-    <meta
-      name="twitter:image"
-      content="https://novexisstudios.in/logo-transparent.png"
-    />
-
-    <link rel="icon" type="image/png" href="/logo.png" />
-
-    <!-- JSON-LD -->
-    <script type="application/ld+json">
+    <style>
+      body {
+        font-family: "Inter", sans-serif;
+        background-color: #050505;
+        color: #ffffff;
+        overflow-x: hidden;
+        margin: 0;
+      }
+      .font-heading {
+        font-family: "Space Grotesk", sans-serif;
+        letter-spacing: -0.02em;
+      }
+      .glass {
+        background: rgba(10, 10, 10, 0.7);
+        backdrop-filter: blur(16px);
+        -webkit-backdrop-filter: blur(16px);
+        border: 1px solid rgba(255, 255, 255, 0.05);
+      }
+      /* Restricted Starfield Background (Top Section Only) */
+      #star-container {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 75vh;
+        z-index: 1; /* Positioned between body background and content */
+        background: radial-gradient(circle at top, #0a0a1a 0%, #000000 100%);
+        overflow: hidden;
+        pointer-events: none;
+        -webkit-mask-image: linear-gradient(
+          to bottom,
+          black 0%,
+          transparent 100%
+        );
+        mask-image: linear-gradient(to bottom, black 0%, transparent 100%);
+      }
+      .star {
+        position: absolute;
+        background: white;
+        border-radius: 50%;
+        opacity: 0.5;
+        animation: twinkle var(--duration) infinite ease-in-out;
+      }
+      @keyframes twinkle {
+        0%,
+        100% {
+          opacity: 0.2;
+          transform: scale(1);
+        }
+        50% {
+          opacity: 1;
+          transform: scale(1.4);
+        }
+      }
+      #root {
+        position: relative;
+        z-index: 10;
+        background: transparent;
+      }
+      ::-webkit-scrollbar {
+        width: 6px;
+      }
+      ::-webkit-scrollbar-track {
+        background: #050505;
+      }
+      ::-webkit-scrollbar-thumb {
+        background: #1a1a1a;
+        border-radius: 10px;
+      }
+      ::-webkit-scrollbar-thumb:hover {
+        background: #222;
+      }
+    </style>
+    <script type="importmap">
       {
-        "@context": "https://schema.org",
-        "@type": "ProfessionalService",
-        "name": "Novexis Studios",
-        "image": "https://novexisstudios.in/logo-transparent.png",
-        "description": "Novexis Studios engineers digital growth through Full-Stack Development, AI Systems, and Creative Automation.",
-        "address": {
-          "@type": "PostalAddress",
-          "addressCountry": "IN"
-        },
-        "url": "https://novexisstudios.in/",
-        "sameAs": [
-          "https://twitter.com/novexisstudios",
-          "https://www.instagram.com/novexis_studios/",
-          "https://www.linkedin.com/company/novexis-studios/"
-        ]
+        "imports": {
+          "framer-motion": "https://esm.sh/framer-motion@^12.29.2",
+          "react-dom/": "https://esm.sh/react-dom@^19.2.4/",
+          "react/": "https://esm.sh/react@^19.2.4/",
+          "react": "https://esm.sh/react@^19.2.4",
+          "react-router-dom": "https://esm.sh/react-router-dom@^7.13.0",
+          "three": "https://esm.sh/three@^0.182.0",
+          "@react-three/fiber": "https://esm.sh/@react-three/fiber@^9.5.0",
+          "lucide-react": "https://esm.sh/lucide-react@^0.563.0",
+          "@react-three/drei": "https://esm.sh/@react-three/drei@^10.7.7"
+        }
       }
     </script>
+    <link rel="stylesheet" href="/index.css" />
   </head>
-
   <body>
     <div id="star-container"></div>
     <div id="root"></div>
-
+    <script>
+      const container = document.getElementById("star-container");
+      const starCount = 250;
+      for (let i = 0; i < starCount; i++) {
+        const star = document.createElement("div");
+        star.className = "star";
+        const size = Math.random() * 2 + 0.5;
+        star.style.width = `${size}px`;
+        star.style.height = `${size}px`;
+        star.style.left = `${Math.random() * 100}%`;
+        star.style.top = `${Math.random() * 100}%`;
+        star.style.setProperty("--duration", `${Math.random() * 3 + 2}s`);
+        star.style.animationDelay = `${Math.random() * 5}s`;
+        container.appendChild(star);
+      }
+    </script>
     <script type="module" src="/index.tsx"></script>
   </body>
 </html>
